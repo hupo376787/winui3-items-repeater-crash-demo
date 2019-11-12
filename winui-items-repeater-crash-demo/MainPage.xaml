@@ -1,0 +1,27 @@
+﻿<Page
+    x:Class="winui_items_repeater_crash_demo.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:winui_items_repeater_crash_demo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ctl="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <local:TextConverter x:Key="textConvt"/>
+    </Page.Resources>
+    
+    <Grid>
+        <ScrollViewer>
+            <ctl:ItemsRepeater ItemsSource="{x:Bind listName}">
+                <ctl:ItemsRepeater.ItemTemplate>
+                    <DataTemplate x:DataType="local:NameS">
+                        <TextBlock Text="{x:Bind name, Converter={StaticResource textConvt}}" Margin="24"/>
+                    </DataTemplate>
+                </ctl:ItemsRepeater.ItemTemplate>
+            </ctl:ItemsRepeater>
+        </ScrollViewer>
+    </Grid>
+</Page>
